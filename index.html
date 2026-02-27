@@ -412,42 +412,7 @@
             box-shadow: 0 5px 15px rgba(0,116,225,0.3);
         }
 
-        /* Секция с информацией о серверах */
-        .u-info-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .u-info-item {
-            flex: 1 1 200px;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 12px;
-            border: 1px solid #e9ecef;
-            text-align: center;
-        }
-
-        .u-info-domain {
-            display: block;
-            font-family: monospace;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #0074e1;
-            margin-bottom: 8px;
-            word-break: break-all;
-        }
-
-        .u-info-desc {
-            display: block;
-            font-size: 0.9rem;
-            color: #6c757d;
-        }
-
-        /* Футер */
+                /* Футер */
         .u-footer {
             background-color: #212529;
             color: white;
@@ -529,7 +494,7 @@
             <a class="u-nav-link active" onclick="showSection('home-section')">Главная</a>
             <a class="u-nav-link" onclick="showSection('phones-section')">Смартфоны</a>
             <a class="u-nav-link" onclick="showSection('latest-section')">Все прошивки</a>
-            <a class="u-nav-link" onclick="showSection('servers-section')">Сервера</a>
+            
         </div>
     </nav>
     
@@ -674,6 +639,19 @@
                 region: 'RU',
                 android: '15',
                 page: 'Redmi13C-RUFirwm204.html',
+                icon: '📱'
+            },
+            {
+                id: 'r13c-fastboot-205MI',
+                modelId: 'redmi-13c',
+                modelName: 'Redmi 13C',
+                modelCode: 'gale',
+                version: '2.0.205.0.VGPMIXM',
+                date: '2025-12-28',
+                type: 'Fastboot',
+                region: 'MI',
+                android: '15',
+                page: 'Redmi13C-MIFirwm205.html',
                 icon: '📱'
             }
         ];
