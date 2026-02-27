@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="keywords" content="Xiaomi, HyperOS, прошивки, Redmi Note 15, Redmi Note 14, Redmi 13C">
-    <meta name="description" content="Скачать официальные прошивки HyperOS для смартфонов Xiaomi.">
+    <meta name="description" content="Скачать официальные прошивки HyperOS для смартфонов Xiaomi. Все ссылки ведут на официальные сервера Xiaomi.">
     <title>Xiaomi HyperOS Firmware | Главная</title>
     
     <style>
@@ -107,6 +107,147 @@
             color: #ced4da;
         }
 
+        /* Всплывающее уведомление в стиле HyperOS */
+        .hyperos-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            max-width: 400px;
+            background: rgba(26, 47, 68, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 25px;
+            color: white;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .notification-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .notification-icon {
+            width: 40px;
+            height: 40px;
+            background: #0074e1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        
+        .notification-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .notification-text {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #e0e0e0;
+            margin-bottom: 15px;
+        }
+        
+        .notification-list {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+        
+        .notification-list li {
+            margin: 8px 0;
+            padding-left: 20px;
+            position: relative;
+            font-size: 0.9rem;
+            color: #e0e0e0;
+        }
+        
+        .notification-list li:before {
+            content: "•";
+            color: #0074e1;
+            font-weight: bold;
+            position: absolute;
+            left: 5px;
+        }
+        
+        .notification-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .notification-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+        
+        .notification-footer {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .notification-email {
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #0074e1;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 10px;
+            border-radius: 15px;
+        }
+        
+        .notification-button {
+            background: #0074e1;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .notification-button:hover {
+            background: #0062bc;
+            transform: translateY(-2px);
+        }
+
         /* Разделы */
         .u-section {
             padding: 60px 0;
@@ -115,6 +256,10 @@
         
         .u-section.active-section {
             display: block;
+        }
+        
+        .u-section:nth-child(even) {
+            background-color: white;
         }
         
         .u-section h2 {
@@ -306,6 +451,28 @@
             cursor: pointer;
         }
 
+        .u-btn-recovery {
+            background-color: #0074e1;
+            color: white;
+        }
+
+        .u-btn-recovery:hover {
+            background-color: #0062bc;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,116,225,0.3);
+        }
+
+        .u-btn-fastboot {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .u-btn-fastboot:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40,167,69,0.3);
+        }
+
         /* Секция деталей смартфона */
         .phone-detail-header {
             background: linear-gradient(135deg, #0a1a2f 0%, #1a2f44 100%);
@@ -412,7 +579,42 @@
             box-shadow: 0 5px 15px rgba(0,116,225,0.3);
         }
 
-                /* Футер */
+        /* Секция с информацией о серверах */
+        .u-info-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .u-info-item {
+            flex: 1 1 200px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border: 1px solid #e9ecef;
+            text-align: center;
+        }
+
+        .u-info-domain {
+            display: block;
+            font-family: monospace;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #0074e1;
+            margin-bottom: 8px;
+            word-break: break-all;
+        }
+
+        .u-info-desc {
+            display: block;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        /* Футер */
         .u-footer {
             background-color: #212529;
             color: white;
@@ -448,6 +650,12 @@
             .firmware-region,
             .firmware-android { margin-bottom: 8px; }
             .firmware-link { width: 100%; margin-top: 10px; }
+            .hyperos-notification {
+                max-width: 90%;
+                right: 5%;
+                left: 5%;
+                top: 10px;
+            }
         }
 
         @media (max-width: 575px) {
@@ -488,13 +696,39 @@
         <p>Сайт создан: NightAuroraCoder</p>
     </header>
     
+    <!-- Всплывающее уведомление HyperOS -->
+    <div class="hyperos-notification" id="legalNotice">
+        <button class="notification-close" onclick="closeNotification()">✕</button>
+        
+        <div class="notification-header">
+            <div class="notification-icon">⚖️</div>
+            <div class="notification-title">HyperOS Firmware</div>
+        </div>
+        
+        <div class="notification-text">
+            <strong>Важная информация:</strong>
+        </div>
+        
+        <ul class="notification-list">
+            <li>Все ссылки ведут на официальные сервера Xiaomi</li>
+            <li>Сайт не хранит файлы прошивок</li>
+            <li>Ответственность за выполенные действия — на пользователе</li>
+            <li>При проблемах: повреждённый файл / ошибка установки</li>
+        </ul>
+        
+        <div class="notification-footer">
+            <span class="notification-email">mintvioletcodersupp@gmail.com</span>
+            <button class="notification-button" onclick="document.getElementById('legalNotice').style.display='none'">Понятно</button>
+        </div>
+    </div>
+    
     <!-- Навигация -->
     <nav class="u-nav">
         <div class="u-sheet">
             <a class="u-nav-link active" onclick="showSection('home-section')">Главная</a>
             <a class="u-nav-link" onclick="showSection('phones-section')">Смартфоны</a>
             <a class="u-nav-link" onclick="showSection('latest-section')">Все прошивки</a>
-            
+            <a class="u-nav-link" onclick="showSection('disclaimer-section')">Подробнее</a>
         </div>
     </nav>
     
@@ -504,7 +738,7 @@
             <img class="u-image-logo" src="images/Xiaomi_HyperOS_logo.svg.png" alt="HyperOS Logo">
             <h1 class="u-text-title">Официальные прошивки HyperOS</h1>
             <p class="u-text-subtitle">Redmi • POCO • Xiaomi</p>
-            <p class="u-text-description">Выберите раздел для просмотра доступных прошивок</p>
+            <p class="u-text-description">Все ссылки ведут на официальные сервера Xiaomi</p>
         </div>
     </section>
     
@@ -515,8 +749,11 @@
             <div style="text-align: center; max-width: 800px; margin: 0 auto;">
                 <p style="font-size: 1.2rem; color: #6c757d; margin-bottom: 30px;">
                     На этом сайте собраны официальные прошивки HyperOS для смартфонов Xiaomi.
-                    Все файлы взяты с официальных серверов Xiaomi.
+                    Все файлы взяты с официальных серверов Xiaomi. Сайт не хранит файлы, а предоставляет прямые ссылки.
                 </p>
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                    <p style="color: #495057;">📧 Контакт для связи: <span style="font-family: monospace; color: #0074e1;">mintvioletcodersupp@gmail.com</span></p>
+                </div>
             </div>
         </div>
     </section>
@@ -537,6 +774,42 @@
         </div>
     </section>
     
+    <!-- Раздел с полным дисклеймером -->
+    <section class="u-section" id="disclaimer-section">
+        <div class="u-sheet">
+            <div style="background: white; border-radius: 20px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                <h2 style="margin-top: 0;">Важная информация</h2>
+                
+                <div style="margin: 30px 0;">
+                    <h3 style="color: #0074e1; margin-bottom: 15px;">📌 Источник файлов</h3>
+                    <p style="line-height: 1.6;">Все ссылки на прошивки ведут исключительно на официальные сервера компании Xiaomi. Сайт не хранит файлы прошивок на своих серверах.</p>
+                </div>
+                
+                <div style="margin: 30px 0;">
+                    <h3 style="color: #0074e1; margin-bottom: 15px;">⚖️ Ответственность</h3>
+                    <p style="line-height: 1.6;">Администрация сайта не несёт ответственности за действия пользователя. Вся ответственность за выполненные действия лежит на пользователе.</p>
+                </div>
+                
+                <div style="margin: 30px 0;">
+                    <h3 style="color: #0074e1; margin-bottom: 15px;">⚠️ Возможные проблемы</h3>
+                    <p style="line-height: 1.6;">Если устройство перестало работать после установки, это может быть вызвано:</p>
+                    <ul style="margin-top: 15px; padding-left: 30px;">
+                        <li>Повреждением файла при скачивании</li>
+                        <li>Неправильной установкой прошивки</li>
+                        <li>Ошибкой в процессе установки</li>
+                        <li>Несовместимостью версии прошивки</li>
+                    </ul>
+                </div>
+                
+                <div style="text-align: center; margin-top: 40px;">
+                    <div style="display: inline-block; background: #f8f9fa; padding: 15px 30px; border-radius: 30px;">
+                        <span style="font-family: monospace; color: #0074e1; font-size: 1.1rem;">mintvioletcodersupp@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <!-- Раздел деталей смартфона -->
     <section class="u-section" id="detail-section">
         <div class="phone-detail-header">
@@ -552,38 +825,27 @@
         </div>
     </section>
     
-    <!-- Информация о серверах -->
-    <section class="u-section" id="servers-section">
-        <div class="u-sheet">
-            <h2>Официальные сервера Xiaomi</h2>
-            <div class="u-info-grid">
-                <div class="u-info-item">
-                    <span class="u-info-domain">bn.d.miui.com</span>
-                    <span class="u-info-desc">Основной сервер</span>
-                </div>
-                <div class="u-info-item">
-                    <span class="u-info-domain">cdnorg.d.miui.com</span>
-                    <span class="u-info-desc">CDN сервер</span>
-                </div>
-                <div class="u-info-item">
-                    <span class="u-info-domain">bkt-sgp...aliyuncs.com</span>
-                    <span class="u-info-desc">Азиатский сервер</span>
-                </div>
-                <div class="u-info-item">
-                    <span class="u-info-domain">hugeota.d.miui.com</span>
-                    <span class="u-info-desc">Китайский сервер</span>
-                </div>
-            </div>
-        </div>
-    </section>
-    
     <footer class="u-footer">
         <div class="u-sheet">
-            <p class="u-text-1">Все прошивки взяты с официальных серверов Xiaomi • Сайт не хранит файлы, а предоставляет прямые ссылки</p>
+            <p class="u-text-1">Все ссылки ведут на официальные сервера Xiaomi • Сайт не хранит файлы</p>
+            <p style="text-align: center; color: #6c757d; margin-top: 10px;">📧 mintvioletcodersupp@gmail.com</p>
         </div>
     </footer>
 
     <script>
+        // Функция закрытия уведомления
+        function closeNotification() {
+            document.getElementById('legalNotice').style.display = 'none';
+        }
+        
+        // Автоматическое закрытие через 10 секунд
+        setTimeout(function() {
+            const notice = document.getElementById('legalNotice');
+            if (notice) {
+                notice.style.display = 'none';
+            }
+        }, 10000);
+        
         // ============================================
         // БАЗА ДАННЫХ ПРОШИВОК
         // ============================================
@@ -639,19 +901,6 @@
                 region: 'RU',
                 android: '15',
                 page: 'Redmi13C-RUFirwm204.html',
-                icon: '📱'
-            },
-            {
-                id: 'r13c-fastboot-205MI',
-                modelId: 'redmi-13c',
-                modelName: 'Redmi 13C',
-                modelCode: 'gale',
-                version: '2.0.205.0.VGPMIXM',
-                date: '2025-12-28',
-                type: 'Fastboot',
-                region: 'MI',
-                android: '15',
-                page: 'Redmi13C-MIFirwm205.html',
                 icon: '📱'
             }
         ];
@@ -737,7 +986,7 @@
             
             // Карточки смартфонов
             const phoneGrid = document.getElementById('phone-grid');
-            phoneGrid.innerHTML = ''; // Очищаем
+            phoneGrid.innerHTML = '';
             
             models.forEach(model => {
                 const count = firmwareDatabase.filter(f => f.modelId === model.id).length;
@@ -757,7 +1006,7 @@
             
             // Карточки всех прошивок
             const firmwareGrid = document.getElementById('firmware-grid');
-            firmwareGrid.innerHTML = ''; // Очищаем
+            firmwareGrid.innerHTML = '';
             
             const sortedFirmware = [...firmwareDatabase].sort((a, b) => new Date(b.date) - new Date(a.date));
             
@@ -785,7 +1034,6 @@
                 firmwareGrid.appendChild(card);
             });
             
-            // Показываем главную секцию по умолчанию
             showSection('home-section');
         });
     </script>
