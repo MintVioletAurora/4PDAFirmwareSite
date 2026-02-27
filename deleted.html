@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прошивка удалена</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'MiSans-Regular', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .error-container {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            max-width: 500px;
+            margin: 20px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+        
+        .error-code {
+            font-size: 6rem;
+            font-weight: 800;
+            color: #dc3545;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+        
+        .error-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #212529;
+            margin-bottom: 15px;
+        }
+        
+        .error-message {
+            font-size: 1.1rem;
+            color: #6c757d;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .error-link {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: #0074e1;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .error-link:hover {
+            background-color: #0062bc;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,116,225,0.3);
+        }
+        
+        .error-footer {
+            margin-top: 30px;
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-code">404</div>
+        <div class="error-title">Прошивка удалена</div>
+        <div class="error-message">
+            Эта прошивка больше не доступна для скачивания.<br>
+            Возможно, она была заменена более новой версией или удалена из-за ограничения в 60 активных прошивок.
+        </div>
+        <a href="/" class="error-link">Вернуться на главную</a>
+        <div class="error-footer">
+            Сайт создан: NightAuroraCoder
+        </div>
+    </div>
+</body>
+</html>

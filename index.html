@@ -4,293 +4,446 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="keywords" content="Xiaomi, HyperOS, прошивки, Redmi Note 15, Redmi Note 14, Redmi 13C">
-    <meta name="description" content="Скачать официальные прошивки HyperOS для Redmi Note 15, Redmi Note 14 и Redmi 13C. Recovery и Fastboot ROM.">
+    <meta name="description" content="Скачать официальные прошивки HyperOS для смартфонов Xiaomi.">
     <title>Xiaomi HyperOS Firmware | Главная</title>
     
-    <!-- Подключаем CSS прямо в HTML, чтобы избежать проблем с путями -->
+    <!-- Подключаем CSS прямо в HTML -->
     <style>
         /* Общие стили */
-        .u-section-home,
-        .u-section-cards,
-        .u-section-info {
-          padding: 60px 0;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-
-        .u-sheet-1 {
-          min-height: auto;
-          position: relative;
-          max-width: 1140px;
-          margin: 0 auto;
-          padding: 0 15px;
+        
+        body {
+            font-family: 'MiSans-Regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f5f7fa;
         }
-
+        
+        .u-header {
+            background-color: #1a2f44;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+        
+        .u-header p {
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+        
+        .u-sheet {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Навигация по разделам */
+        .u-nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .u-nav .u-sheet {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 15px 20px;
+        }
+        
+        .u-nav-link {
+            text-decoration: none;
+            color: #495057;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+        
+        .u-nav-link:hover,
+        .u-nav-link.active {
+            background-color: #0074e1;
+            color: white;
+        }
+        
         /* Главный баннер */
         .u-section-home {
-          background: linear-gradient(135deg, #0a1a2f 0%, #1a2f44 100%);
-          color: white;
-          text-align: center;
+            background: linear-gradient(135deg, #0a1a2f 0%, #1a2f44 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
         }
 
         .u-image-logo {
-          width: 400px;
-          height: auto;
-          margin: 0 auto 20px;
-          display: block;
+            width: 400px;
+            height: auto;
+            margin: 0 auto 20px;
+            display: block;
         }
 
         .u-text-title {
-          font-family: 'MiSans-Regular', sans-serif;
-          font-size: 2.5rem;
-          font-weight: 700;
-          margin: 20px auto 10px;
-          color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 20px auto 10px;
+            color: white;
         }
 
         .u-text-subtitle {
-          font-family: 'MiSans-Regular', sans-serif;
-          font-size: 1.5rem;
-          margin: 10px auto;
-          color: #adb5bd;
+            font-size: 1.5rem;
+            margin: 10px auto;
+            color: #adb5bd;
         }
 
         .u-text-description {
-          font-family: 'MiSans-Regular', sans-serif;
-          font-size: 1.1rem;
-          max-width: 700px;
-          margin: 20px auto 0;
-          color: #ced4da;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 20px auto 0;
+            color: #ced4da;
         }
 
-        /* Секция с карточками */
-        .u-section-cards {
-          background-color: #f8f9fa;
+        /* Разделы */
+        .u-section {
+            padding: 60px 0;
+        }
+        
+        .u-section:nth-child(even) {
+            background-color: white;
+        }
+        
+        .u-section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #212529;
         }
 
-        .u-section-cards .u-sheet-1 {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 30px;
+        /* Сетка карточек */
+        .u-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
         }
 
-        /* Карточка устройства */
-        .u-card {
-          width: 350px;
-          background: white;
-          border-radius: 20px;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-          transition: all 0.3s ease;
-          overflow: hidden;
-          border: 1px solid #e9ecef;
+        /* Карточка смартфона (для раздела выбора) */
+        .u-card-phone {
+            width: 280px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            border: 1px solid #e9ecef;
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
 
-        .u-card:hover {
-          transform: translateY(-10px);
-          box-shadow: 0 20px 40px rgba(0,116,225,0.15);
-          border-color: #0074e1;
+        .u-card-phone:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,116,225,0.15);
+            border-color: #0074e1;
+        }
+
+        .u-card-image {
+            width: 100%;
+            height: 200px;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #adb5bd;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .u-card-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
         }
 
         .u-card-body {
-          padding: 30px;
+            padding: 20px;
         }
 
         .u-card-title {
-          font-family: 'MiSans-Regular', sans-serif;
-          font-size: 1.8rem;
-          font-weight: 700;
-          margin: 0 0 10px;
-          color: #212529;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin: 0 0 8px;
+            color: #212529;
         }
 
         .u-card-code {
-          font-family: monospace;
-          font-size: 1rem;
-          color: #0074e1;
-          margin: 0 0 15px;
-          padding-bottom: 15px;
-          border-bottom: 1px solid #e9ecef;
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: #0074e1;
+            margin: 0 0 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #e9ecef;
         }
 
         .u-card-desc {
-          font-family: 'MiSans-Regular', sans-serif;
-          font-size: 1rem;
-          color: #6c757d;
-          margin: 0 0 25px;
-          line-height: 1.5;
+            font-size: 0.95rem;
+            color: #6c757d;
+            margin: 0 0 15px;
+            line-height: 1.5;
         }
 
-        .u-card-buttons {
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
+        .u-card-badge {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 30px;
+            margin-top: 5px;
         }
 
-        /* Кнопки в карточках */
-        .u-card-buttons .u-btn {
-          --radius: 12px;
-          font-size: 1rem;
-          font-weight: 600;
-          font-family: 'MiSans-Normal', sans-serif;
-          background-image: none;
-          border: none;
-          padding: 14px 20px !important;
-          width: 100%;
-          text-align: center;
-          transition: all 0.3s ease;
-          display: block;
-          box-sizing: border-box;
-          text-decoration: none;
-          margin: 0 !important;
-          border-radius: 12px;
-          cursor: pointer;
+        /* Карточка прошивки (для списка) */
+        .u-card-firmware {
+            width: 350px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+
+        .u-card-firmware:hover {
+            box-shadow: 0 10px 25px rgba(0,116,225,0.1);
+            border-color: #0074e1;
+        }
+
+        .u-card-firmware .u-card-body {
+            padding: 20px;
+        }
+
+        .u-firmware-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .u-firmware-model {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #212529;
+        }
+
+        .u-firmware-date {
+            font-size: 0.85rem;
+            color: #6c757d;
+            background: #f8f9fa;
+            padding: 4px 8px;
+            border-radius: 20px;
+        }
+
+        .u-firmware-version {
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: #0074e1;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .u-firmware-type {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .u-type-badge {
+            background-color: #e7f5ff;
+            color: #0074e1;
+            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .u-firmware-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .u-btn-small {
+            flex: 1;
+            background-color: #f8f9fa;
+            color: #495057;
+            text-decoration: none;
+            padding: 8px 0;
+            text-align: center;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            border: 1px solid #e9ecef;
+        }
+
+        .u-btn-small:hover {
+            background-color: #0074e1;
+            color: white;
+            border-color: #0074e1;
+        }
+
+        /* Кнопки */
+        .u-btn {
+            --radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            background-image: none;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .u-btn-recovery {
-          background-color: #0074e1 !important;
-          color: #ffffff !important;
+            background-color: #0074e1;
+            color: white;
         }
 
         .u-btn-recovery:hover {
-          background-color: #0062bc !important;
-          transform: translateY(-2px);
-          box-shadow: 0 5px 15px rgba(0,116,225,0.3);
+            background-color: #0062bc;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,116,225,0.3);
         }
 
         .u-btn-fastboot {
-          background-color: #28a745 !important;
-          color: #ffffff !important;
+            background-color: #28a745;
+            color: white;
         }
 
         .u-btn-fastboot:hover {
-          background-color: #218838 !important;
-          transform: translateY(-2px);
-          box-shadow: 0 5px 15px rgba(40,167,69,0.3);
+            background-color: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40,167,69,0.3);
         }
 
         .u-btn-disabled {
-          display: block;
-          padding: 14px 20px;
-          background-color: #e9ecef;
-          color: #adb5bd;
-          text-align: center;
-          border-radius: 12px;
-          font-family: 'MiSans-Normal', sans-serif;
-          font-size: 1rem;
-          cursor: not-allowed;
+            background-color: #e9ecef;
+            color: #adb5bd;
+            cursor: not-allowed;
+            pointer-events: none;
         }
 
         /* Секция с информацией о серверах */
-        .u-section-info {
-          background-color: white;
-          text-align: center;
-        }
-
-        .u-section-info h2 {
-          font-family: 'MiSans-Regular', sans-serif;
-          font-size: 2rem;
-          font-weight: 700;
-          margin-bottom: 40px;
-          color: #212529;
-        }
-
         .u-info-grid {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 30px;
-          max-width: 1000px;
-          margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .u-info-item {
-          flex: 1 1 200px;
-          padding: 20px;
-          background: #f8f9fa;
-          border-radius: 12px;
-          border: 1px solid #e9ecef;
+            flex: 1 1 200px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border: 1px solid #e9ecef;
+            text-align: center;
         }
 
         .u-info-domain {
-          display: block;
-          font-family: monospace;
-          font-size: 0.9rem;
-          font-weight: 600;
-          color: #0074e1;
-          margin-bottom: 8px;
-          word-break: break-all;
+            display: block;
+            font-family: monospace;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #0074e1;
+            margin-bottom: 8px;
+            word-break: break-all;
         }
 
         .u-info-desc {
-          display: block;
-          font-family: 'MiSans-Regular', sans-serif;
-          font-size: 0.9rem;
-          color: #6c757d;
+            display: block;
+            font-size: 0.9rem;
+            color: #6c757d;
         }
 
         /* Футер */
         .u-footer {
-          background-color: #212529 !important;
-          color: white;
-          padding: 30px 0;
+            background-color: #212529;
+            color: white;
+            padding: 30px 0;
         }
 
         .u-footer .u-text-1 {
-          font-family: 'MiSans-Regular', sans-serif;
-          font-size: 0.9rem;
-          text-align: center;
-          color: #adb5bd;
-          margin: 0;
-        }
-
-        /* Хедер */
-        .u-header {
-          background-color: #1a2f44;
-          padding: 15px 0;
-        }
-
-        .u-header .u-text-1 {
-          font-family: 'MiSans-Regular', sans-serif;
-          color: #adb5bd;
-          margin: 0 auto;
-          text-align: center;
+            font-size: 0.9rem;
+            text-align: center;
+            color: #adb5bd;
         }
 
         /* Адаптация */
         @media (max-width: 767px) {
-          .u-text-title { font-size: 2rem; }
-          .u-text-subtitle { font-size: 1.2rem; }
-          .u-image-logo { width: 300px; }
-          .u-card { width: 100%; max-width: 400px; }
-          .u-info-grid { flex-direction: column; gap: 15px; }
-          .u-info-item { flex: 1 1 auto; }
-          .u-section-home,
-          .u-section-cards,
-          .u-section-info { padding: 40px 0; }
+            .u-text-title { font-size: 2rem; }
+            .u-text-subtitle { font-size: 1.2rem; }
+            .u-image-logo { width: 300px; }
+            .u-nav .u-sheet { flex-wrap: wrap; gap: 10px; }
+            .u-card-phone { width: 100%; max-width: 350px; }
+            .u-card-firmware { width: 100%; max-width: 400px; }
         }
 
         @media (max-width: 575px) {
-          .u-text-title { font-size: 1.5rem; }
-          .u-text-subtitle { font-size: 1rem; }
-          .u-image-logo { width: 250px; }
-          .u-card-body { padding: 20px; }
+            .u-text-title { font-size: 1.5rem; }
+            .u-text-subtitle { font-size: 1rem; }
+            .u-image-logo { width: 250px; }
         }
 
-        /* page-custom-fonts */
         @font-face {
-          font-family: 'MiSans-Regular';
-          font-style: normal;
-          font-weight: 400;
-          src: url(fonts/MiSans-Regular.ttf);
+            font-family: 'MiSans-Regular';
+            font-style: normal;
+            font-weight: 400;
+            src: url(fonts/MiSans-Regular.ttf);
         }
         @font-face {
-          font-family: 'MiSans-Normal';
-          font-style: normal;
-          font-weight: 400;
-          src: url(fonts/MiSans-Normal.ttf);
+            font-family: 'MiSans-Normal';
+            font-style: normal;
+            font-weight: 400;
+            src: url(fonts/MiSans-Normal.ttf);
+        }
+        
+        /* Стили для страницы "Прошивка удалена" */
+        .u-error-page {
+            text-align: center;
+            padding: 100px 20px;
+        }
+        
+        .u-error-code {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #dc3545;
+            margin-bottom: 20px;
+        }
+        
+        .u-error-message {
+            font-size: 1.5rem;
+            color: #6c757d;
+            margin-bottom: 30px;
+        }
+        
+        .u-error-link {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #0074e1;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
         }
     </style>
     
-    <!-- Подключаем скрипты (они обычно работают нормально) -->
     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
     
@@ -304,71 +457,55 @@
     <meta property="og:title" content="Xiaomi HyperOS Firmware">
     <meta property="og:type" content="website">
 </head>
-<body data-path-to-root="./" data-include-products="false" class="u-body u-clearfix u-xl-mode" data-lang="ru">
-    <header class="u-clearfix u-header" id="header">
-        <p class="u-text u-text-default u-text-1">Сайт создан: NightAuroraCoder</p>
+<body>
+    <header class="u-header" id="header">
+        <p>Сайт создан: NightAuroraCoder</p>
     </header>
     
+    <!-- Навигация -->
+    <nav class="u-nav">
+        <div class="u-sheet">
+            <a href="#home" class="u-nav-link active">Главная</a>
+            <a href="#phones" class="u-nav-link">Выбрать смартфон</a>
+            <a href="#latest" class="u-nav-link">Последние прошивки</a>
+            <a href="#servers" class="u-nav-link">Сервера</a>
+        </div>
+    </nav>
+    
     <!-- Главный баннер -->
-    <section class="u-clearfix u-section-home" id="home">
-        <div class="u-clearfix u-sheet u-sheet-1">
-            <img class="u-image u-image-contain u-image-default u-image-logo" src="images/Xiaomi_HyperOS_logo.svg.png" alt="HyperOS Logo" data-image-width="1280" data-image-height="179">
-            <h1 class="u-custom-font u-text u-text-default u-text-title">Официальные прошивки HyperOS</h1>
-            <p class="u-custom-font u-text u-text-subtitle">Redmi Note 15 • Redmi Note 14 • Redmi 13C</p>
-            <p class="u-custom-font u-text u-text-description">Выберите устройство и тип прошивки для скачивания с официальных серверов Xiaomi</p>
+    <section class="u-section-home" id="home">
+        <div class="u-sheet">
+            <img class="u-image-logo" src="images/Xiaomi_HyperOS_logo.svg.png" alt="HyperOS Logo">
+            <h1 class="u-text-title">Официальные прошивки HyperOS</h1>
+            <p class="u-text-subtitle">Redmi • POCO • Xiaomi</p>
+            <p class="u-text-description">Выберите устройство или смотрите последние добавленные прошивки</p>
         </div>
     </section>
     
-    <!-- Карточки устройств -->
-    <section class="u-clearfix u-section-cards" id="cards">
-        <div class="u-clearfix u-sheet u-sheet-1">
-            
-            <!-- Redmi Note 15 -->
-            <div class="u-card u-card-default u-card-1">
-                <div class="u-card-body">
-                    <h3 class="u-custom-font u-card-title">Redmi Note 15</h3>
-                    <p class="u-custom-font u-card-code">spinel • 2.0.211.0.VPGMIXM</p>
-                    <p class="u-custom-font u-card-desc">Глобальная версия HyperOS 2<br>Январь 2026</p>
-                    <div class="u-card-buttons">
-                        <a href="RedmiNote15-Recovery.html" class="u-btn u-btn-recovery">Recovery ROM</a>
-                        <a href="RedmiNote15-Fastboot.html" class="u-btn u-btn-fastboot">Fastboot ROM</a>
-                    </div>
-                </div>
+    <!-- Раздел выбора смартфона (с картинками) -->
+    <section class="u-section" id="phones">
+        <div class="u-sheet">
+            <h2>Выберите ваш смартфон</h2>
+            <div class="u-grid" id="phone-grid">
+                <!-- Карточки будут добавлены автоматически через JavaScript -->
             </div>
-            
-            <!-- Redmi Note 14 -->
-            <div class="u-card u-card-default u-card-2">
-                <div class="u-card-body">
-                    <h3 class="u-custom-font u-card-title">Redmi Note 14 4G</h3>
-                    <p class="u-custom-font u-card-code">tanzanite • 2.0.213.0.VOGEUXM</p>
-                    <p class="u-custom-font u-card-desc">Европейская версия HyperOS 2<br>Февраль 2026</p>
-                    <div class="u-card-buttons">
-                        <a href="RedmiNote14-Recovery.html" class="u-btn u-btn-recovery">Recovery ROM</a>
-                        <span class="u-btn-disabled">Fastboot недоступен</span>
-                    </div>
-                </div>
+        </div>
+    </section>
+    
+    <!-- Раздел последних прошивок (максимум 60) -->
+    <section class="u-section" id="latest">
+        <div class="u-sheet">
+            <h2>Последние прошивки (60)</h2>
+            <div class="u-grid" id="firmware-grid">
+                <!-- Прошивки будут добавлены автоматически через JavaScript -->
             </div>
-            
-            <!-- Redmi 13C -->
-            <div class="u-card u-card-default u-card-3">
-                <div class="u-card-body">
-                    <h3 class="u-custom-font u-card-title">Redmi 13C</h3>
-                    <p class="u-custom-font u-card-code">gale • 2.0.204.0.VGPRUXM</p>
-                    <p class="u-custom-font u-card-desc">Российская версия HyperOS 2<br>Февраль 2026</p>
-                    <div class="u-card-buttons">
-                        <a href="Redmi13C-Recovery.html" class="u-btn u-btn-recovery">Recovery ROM</a>
-                        <span class="u-btn-disabled">Fastboot недоступен</span>
-                    </div>
-                </div>
-            </div>
-            
         </div>
     </section>
     
     <!-- Информация о серверах -->
-    <section class="u-clearfix u-section-info" id="info">
-        <div class="u-clearfix u-sheet u-sheet-1">
-            <h2 class="u-custom-font u-text">Официальные сервера Xiaomi</h2>
+    <section class="u-section" id="servers">
+        <div class="u-sheet">
+            <h2>Официальные сервера Xiaomi</h2>
             <div class="u-info-grid">
                 <div class="u-info-item">
                     <span class="u-info-domain">bn.d.miui.com</span>
@@ -390,10 +527,153 @@
         </div>
     </section>
     
-    <footer class="u-clearfix u-footer u-grey-80" id="footer">
-        <div class="u-clearfix u-sheet u-sheet-1">
-            <p class="u-text u-text-default u-text-1">Все прошивки взяты с официальных серверов Xiaomi • Сайт не хранит файлы, а предоставляет прямые ссылки</p>
+    <footer class="u-footer">
+        <div class="u-sheet">
+            <p class="u-text-1">Все прошивки взяты с официальных серверов Xiaomi • Сайт не хранит файлы, а предоставляет прямые ссылки</p>
         </div>
     </footer>
+
+    <!-- JavaScript для динамической загрузки данных -->
+    <script>
+        // База данных прошивок (при добавлении новой - просто вставьте сюда)
+        const firmwareDatabase = [
+            // Redmi Note 15
+            {
+                id: 'rn15-recovery',
+                model: 'Redmi Note 15',
+                modelCode: 'spinel',
+                version: '2.0.211.0.VPGMIXM',
+                date: '2026-01-15',
+                type: 'Recovery',
+                region: 'Global',
+                android: '15',
+                page: 'RedmiNote15-Recovery.html',
+                image: '📱'
+            },
+            {
+                id: 'rn15-fastboot',
+                model: 'Redmi Note 15',
+                modelCode: 'spinel',
+                version: '2.0.211.0.VPGMIXM',
+                date: '2026-01-15',
+                type: 'Fastboot',
+                region: 'Global',
+                android: '15',
+                page: 'RedmiNote15-Fastboot.html',
+                image: '📱'
+            },
+            
+            // Redmi Note 14
+            {
+                id: 'rn14-recovery',
+                model: 'Redmi Note 14 4G',
+                modelCode: 'tanzanite',
+                version: '2.0.213.0.VOGEUXM',
+                date: '2026-02-05',
+                type: 'Recovery',
+                region: 'EEA',
+                android: '15',
+                page: 'RedmiNote14-Recovery.html',
+                image: '📱'
+            },
+            
+            // Redmi 13C
+            {
+                id: 'r13c-recovery',
+                model: 'Redmi 13C',
+                modelCode: 'gale',
+                version: '2.0.204.0.VGPRUXM',
+                date: '2026-02-11',
+                type: 'Recovery',
+                region: 'RU',
+                android: '15',
+                page: 'Redmi13C-Recovery.html',
+                image: '📱'
+            }
+        ];
+        
+        // Список смартфонов (уникальные модели)
+        const phoneList = [];
+        const phoneMap = new Map();
+        
+        firmwareDatabase.forEach(fw => {
+            if (!phoneMap.has(fw.model)) {
+                phoneMap.set(fw.model, {
+                    model: fw.model,
+                    modelCode: fw.modelCode,
+                    image: fw.image,
+                    versions: []
+                });
+            }
+            phoneMap.get(fw.model).versions.push({
+                version: fw.version,
+                type: fw.type,
+                page: fw.page
+            });
+        });
+        
+        // Сортируем прошивки по дате (новые сверху)
+        firmwareDatabase.sort((a, b) => new Date(b.date) - new Date(a.date));
+        
+        // Ограничиваем до 60 последних
+        const latestFirmware = firmwareDatabase.slice(0, 60);
+        
+        // Функция для форматирования даты
+        function formatDate(dateStr) {
+            const d = new Date(dateStr);
+            return d.toLocaleDateString('ru-RU', { year: 'numeric', month: 'long', day: 'numeric' });
+        }
+        
+        // Заполняем карточки смартфонов
+        const phoneGrid = document.getElementById('phone-grid');
+        phoneMap.forEach(phone => {
+            const hasFastboot = phone.versions.some(v => v.type === 'Fastboot');
+            const recoveryPage = phone.versions.find(v => v.type === 'Recovery')?.page || '#';
+            const fastbootPage = phone.versions.find(v => v.type === 'Fastboot')?.page || '#';
+            
+            const card = document.createElement('a');
+            card.href = recoveryPage;
+            card.className = 'u-card-phone';
+            card.innerHTML = `
+                <div class="u-card-image">${phone.image}</div>
+                <div class="u-card-body">
+                    <h3 class="u-card-title">${phone.model}</h3>
+                    <p class="u-card-code">${phone.modelCode}</p>
+                    <p class="u-card-desc">
+                        Доступно прошивок: ${phone.versions.length}<br>
+                        ${phone.versions.map(v => v.type).join(' • ')}
+                    </p>
+                    ${hasFastboot ? '<span class="u-card-badge">Есть Fastboot</span>' : ''}
+                </div>
+            `;
+            phoneGrid.appendChild(card);
+        });
+        
+        // Заполняем карточки последних прошивок
+        const firmwareGrid = document.getElementById('firmware-grid');
+        latestFirmware.forEach(fw => {
+            const card = document.createElement('div');
+            card.className = 'u-card-firmware';
+            card.innerHTML = `
+                <div class="u-card-body">
+                    <div class="u-firmware-header">
+                        <span class="u-firmware-model">${fw.model}</span>
+                        <span class="u-firmware-date">${formatDate(fw.date)}</span>
+                    </div>
+                    <div class="u-firmware-version">${fw.version}</div>
+                    <div class="u-firmware-type">
+                        <span class="u-type-badge">${fw.type}</span>
+                        <span class="u-type-badge">Android ${fw.android}</span>
+                        <span class="u-type-badge">${fw.region}</span>
+                    </div>
+                    <div class="u-firmware-buttons">
+                        <a href="${fw.page}" class="u-btn-small">Скачать</a>
+                        <span class="u-btn-small">${fw.modelCode}</span>
+                    </div>
+                </div>
+            `;
+            firmwareGrid.appendChild(card);
+        });
+    </script>
 </body>
 </html>
