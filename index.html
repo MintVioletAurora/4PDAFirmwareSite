@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="keywords" content="Xiaomi, HyperOS, прошивки, Redmi Note 15, Redmi Note 14, Redmi 13C">
-    <meta name="description" content="Скачать официальные прошивки HyperOS для смартфонов Xiaomi. Последние 60 прошивок.">
+    <meta name="description" content="Скачать официальные прошивки HyperOS для смартфонов Xiaomi.">
     <title>Xiaomi HyperOS Firmware | Главная</title>
     
     <style>
@@ -63,6 +63,7 @@
             padding: 8px 16px;
             border-radius: 30px;
             transition: all 0.3s;
+            cursor: pointer;
         }
         
         .u-nav-link:hover,
@@ -109,10 +110,11 @@
         /* Разделы */
         .u-section {
             padding: 60px 0;
+            display: none;
         }
         
-        .u-section:nth-child(even) {
-            background-color: white;
+        .u-section.active-section {
+            display: block;
         }
         
         .u-section h2 {
@@ -131,7 +133,7 @@
             gap: 30px;
         }
 
-        /* Карточка смартфона (для раздела выбора) */
+        /* Карточка смартфона */
         .u-card-phone {
             width: 280px;
             background: white;
@@ -143,6 +145,7 @@
             text-decoration: none;
             color: inherit;
             display: block;
+            cursor: pointer;
         }
 
         .u-card-phone:hover {
@@ -201,7 +204,7 @@
             margin-top: 5px;
         }
 
-        /* Карточка прошивки (для списка последних) */
+        /* Карточка прошивки */
         .u-card-firmware {
             width: 350px;
             background: white;
@@ -303,33 +306,110 @@
             cursor: pointer;
         }
 
-        .u-btn-recovery {
-            background-color: #0074e1;
+        /* Секция деталей смартфона */
+        .phone-detail-header {
+            background: linear-gradient(135deg, #0a1a2f 0%, #1a2f44 100%);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .back-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #adb5bd;
+            text-decoration: none;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        
+        .back-button:hover {
             color: white;
         }
-
-        .u-btn-recovery:hover {
+        
+        .detail-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .detail-code {
+            font-size: 1.2rem;
+            color: #adb5bd;
+            font-family: monospace;
+        }
+        
+        .detail-stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0074e1;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #adb5bd;
+        }
+        
+        .firmware-table {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+        
+        .table-header {
+            display: grid;
+            grid-template-columns: 80px 1.5fr 1fr 0.8fr 0.8fr 0.8fr 100px;
+            background-color: #f8f9fa;
+            padding: 15px 20px;
+            font-weight: 600;
+            color: #495057;
+            border-bottom: 2px solid #e9ecef;
+        }
+        
+        .table-row {
+            display: grid;
+            grid-template-columns: 80px 1.5fr 1fr 0.8fr 0.8fr 0.8fr 100px;
+            padding: 15px 20px;
+            border-bottom: 1px solid #e9ecef;
+            transition: all 0.3s;
+            align-items: center;
+        }
+        
+        .table-row:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .firmware-link {
+            background-color: #0074e1;
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .firmware-link:hover {
             background-color: #0062bc;
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0,116,225,0.3);
-        }
-
-        .u-btn-fastboot {
-            background-color: #28a745;
-            color: white;
-        }
-
-        .u-btn-fastboot:hover {
-            background-color: #218838;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(40,167,69,0.3);
-        }
-
-        .u-btn-disabled {
-            background-color: #e9ecef;
-            color: #adb5bd;
-            cursor: not-allowed;
-            pointer-events: none;
         }
 
         /* Секция с информацией о серверах */
@@ -388,6 +468,21 @@
             .u-nav .u-sheet { flex-wrap: wrap; gap: 10px; }
             .u-card-phone { width: 100%; max-width: 350px; }
             .u-card-firmware { width: 100%; max-width: 400px; }
+            .table-header { display: none; }
+            .table-row {
+                display: block;
+                padding: 20px;
+                margin-bottom: 15px;
+                border: 1px solid #e9ecef;
+                border-radius: 12px;
+            }
+            .firmware-icon { float: left; margin-right: 15px; }
+            .firmware-version,
+            .firmware-date,
+            .firmware-type,
+            .firmware-region,
+            .firmware-android { margin-bottom: 8px; }
+            .firmware-link { width: 100%; margin-top: 10px; }
         }
 
         @media (max-width: 575px) {
@@ -431,59 +526,83 @@
     <!-- Навигация -->
     <nav class="u-nav">
         <div class="u-sheet">
-            <a href="#home" class="u-nav-link active">Главная</a>
-            <a href="#phones" class="u-nav-link">Выбрать смартфон</a>
-            <a href="#latest" class="u-nav-link">Последние прошивки (60)</a>
-            <a href="#servers" class="u-nav-link">Сервера</a>
+            <a class="u-nav-link active" onclick="showSection('home-section')">Главная</a>
+            <a class="u-nav-link" onclick="showSection('phones-section')">Смартфоны</a>
+            <a class="u-nav-link" onclick="showSection('latest-section')">Все прошивки</a>
+            <a class="u-nav-link" onclick="showSection('servers-section')">Сервера</a>
         </div>
     </nav>
     
     <!-- Главный баннер -->
-    <section class="u-section-home" id="home">
+    <section class="u-section-home">
         <div class="u-sheet">
             <img class="u-image-logo" src="images/Xiaomi_HyperOS_logo.svg.png" alt="HyperOS Logo">
             <h1 class="u-text-title">Официальные прошивки HyperOS</h1>
             <p class="u-text-subtitle">Redmi • POCO • Xiaomi</p>
-            <p class="u-text-description">Выберите устройство или смотрите последние добавленные прошивки (максимум 60)</p>
+            <p class="u-text-description">Выберите раздел для просмотра доступных прошивок</p>
+        </div>
+    </section>
+    
+    <!-- Раздел главная -->
+    <section class="u-section active-section" id="home-section">
+        <div class="u-sheet">
+            <h2>Добро пожаловать!</h2>
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <p style="font-size: 1.2rem; color: #6c757d; margin-bottom: 30px;">
+                    На этом сайте собраны официальные прошивки HyperOS для смартфонов Xiaomi.
+                    Все файлы взяты с официальных серверов Xiaomi.
+                </p>
+            </div>
         </div>
     </section>
     
     <!-- Раздел выбора смартфона -->
-    <section class="u-section" id="phones">
+    <section class="u-section" id="phones-section">
         <div class="u-sheet">
-            <h2>Выберите ваш смартфон</h2>
-            <div class="u-grid" id="phone-grid">
-                <!-- Карточки будут добавлены через JavaScript -->
-            </div>
+            <h2>Выберите смартфон</h2>
+            <div class="u-grid" id="phone-grid"></div>
         </div>
     </section>
     
-    <!-- Раздел последних прошивок (максимум 60) -->
-    <section class="u-section" id="latest">
+    <!-- Раздел всех прошивок -->
+    <section class="u-section" id="latest-section">
         <div class="u-sheet">
-            <h2>Последние прошивки <span style="font-size: 1rem; color: #6c757d;">(последние 60)</span></h2>
-            <div class="u-grid" id="firmware-grid">
-                <!-- Прошивки будут добавлены через JavaScript -->
+            <h2>Все доступные прошивки</h2>
+            <div class="u-grid" id="firmware-grid"></div>
+        </div>
+    </section>
+    
+    <!-- Раздел деталей смартфона -->
+    <section class="u-section" id="detail-section">
+        <div class="phone-detail-header">
+            <div class="u-sheet">
+                <a class="back-button" onclick="showSection('phones-section')">← Назад к смартфонам</a>
+                <h1 class="detail-title" id="detail-title">Redmi Note 15</h1>
+                <div class="detail-code" id="detail-code">spinel</div>
+                <div class="detail-stats" id="detail-stats"></div>
             </div>
+        </div>
+        <div class="u-sheet">
+            <div class="firmware-table" id="detail-table"></div>
         </div>
     </section>
     
     <!-- Информация о серверах -->
-    <section class="u-section" id="servers">
+    <section class="u-section" id="servers-section">
         <div class="u-sheet">
             <h2>Официальные сервера Xiaomi</h2>
             <div class="u-info-grid">
                 <div class="u-info-item">
                     <span class="u-info-domain">bn.d.miui.com</span>
-                    <span class="u-info-desc">Основной европейский сервер</span>
+                    <span class="u-info-desc">Основной сервер</span>
                 </div>
                 <div class="u-info-item">
                     <span class="u-info-domain">cdnorg.d.miui.com</span>
-                    <span class="u-info-desc">CDN сервер для США</span>
+                    <span class="u-info-desc">CDN сервер</span>
                 </div>
                 <div class="u-info-item">
                     <span class="u-info-domain">bkt-sgp...aliyuncs.com</span>
-                    <span class="u-info-desc">Азиатский сервер (Aliyun)</span>
+                    <span class="u-info-desc">Азиатский сервер</span>
                 </div>
                 <div class="u-info-item">
                     <span class="u-info-domain">hugeota.d.miui.com</span>
@@ -499,61 +618,172 @@
         </div>
     </footer>
 
-    <!-- Подключаем базу данных прошивок -->
-    <script src="js/firmware-db.js"></script>
-    
     <script>
         // ============================================
-        // ГЛАВНАЯ СТРАНИЦА - АВТОМАТИЧЕСКАЯ ЗАГРУЗКА
+        // БАЗА ДАННЫХ ПРОШИВОК
+        // ============================================
+        
+        const firmwareDatabase = [
+            {
+                id: 'rn15-recovery-211',
+                modelId: 'redmi-note-15',
+                modelName: 'Redmi Note 15',
+                modelCode: 'spinel',
+                version: '2.0.211.0.VPGMIXM',
+                date: '2026-01-15',
+                type: 'Recovery',
+                region: 'Global',
+                android: '15',
+                page: 'RedmiNote15MI211-Recovery.html',
+                icon: '📱'
+            },
+            {
+                id: 'rn15-fastboot-211',
+                modelId: 'redmi-note-15',
+                modelName: 'Redmi Note 15',
+                modelCode: 'spinel',
+                version: '2.0.211.0.VPGMIXM',
+                date: '2026-01-15',
+                type: 'Fastboot',
+                region: 'Global',
+                android: '15',
+                page: 'RedmiNote15MI211.html',
+                icon: '📱'
+            },
+            {
+                id: 'rn14-recovery-213',
+                modelId: 'redmi-note-14',
+                modelName: 'Redmi Note 14 4G',
+                modelCode: 'tanzanite',
+                version: '2.0.213.0.VOGEUXM',
+                date: '2026-02-05',
+                type: 'Recovery',
+                region: 'EEA',
+                android: '15',
+                page: 'RedmiNote14-Recovery.html',
+                icon: '📱'
+            },
+            {
+                id: 'r13c-recovery-204',
+                modelId: 'redmi-13c',
+                modelName: 'Redmi 13C',
+                modelCode: 'gale',
+                version: '2.0.204.0.VGPRUXM',
+                date: '2026-02-11',
+                type: 'Recovery',
+                region: 'RU',
+                android: '15',
+                page: 'Redmi13C-RUFirwm204.html',
+                icon: '📱'
+            }
+        ];
+        
+        const models = [
+            { id: 'redmi-note-15', name: 'Redmi Note 15', code: 'spinel', icon: '📱' },
+            { id: 'redmi-note-14', name: 'Redmi Note 14 4G', code: 'tanzanite', icon: '📱' },
+            { id: 'redmi-13c', name: 'Redmi 13C', code: 'gale', icon: '📱' }
+        ];
+        
+        // ============================================
+        // ФУНКЦИИ
+        // ============================================
+        
+        function showSection(sectionId) {
+            document.querySelectorAll('.u-section').forEach(s => s.classList.remove('active-section'));
+            document.getElementById(sectionId).classList.add('active-section');
+        }
+        
+        function showPhoneDetail(modelId) {
+            const model = models.find(m => m.id === modelId);
+            const modelFirmware = firmwareDatabase.filter(f => f.modelId === modelId);
+            
+            document.getElementById('detail-title').textContent = model.name;
+            document.getElementById('detail-code').textContent = model.code;
+            
+            const total = modelFirmware.length;
+            const recovery = modelFirmware.filter(f => f.type === 'Recovery').length;
+            const fastboot = modelFirmware.filter(f => f.type === 'Fastboot').length;
+            
+            document.getElementById('detail-stats').innerHTML = `
+                <div class="stat-item">
+                    <div class="stat-value">${total}</div>
+                    <div class="stat-label">всего</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${recovery}</div>
+                    <div class="stat-label">Recovery</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${fastboot}</div>
+                    <div class="stat-label">Fastboot</div>
+                </div>
+            `;
+            
+            let tableHtml = `
+                <div class="table-header">
+                    <div></div>
+                    <div>Версия</div>
+                    <div>Дата</div>
+                    <div>Тип</div>
+                    <div>Регион</div>
+                    <div>Android</div>
+                    <div></div>
+                </div>
+            `;
+            
+            modelFirmware.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            modelFirmware.forEach(fw => {
+                tableHtml += `
+                    <div class="table-row">
+                        <div style="font-size: 2rem; text-align: center;">${fw.icon}</div>
+                        <div style="font-family: monospace; color: #0074e1;">${fw.version}</div>
+                        <div>${new Date(fw.date).toLocaleDateString('ru-RU')}</div>
+                        <div><span class="u-type-badge">${fw.type}</span></div>
+                        <div>${fw.region}</div>
+                        <div>${fw.android}</div>
+                        <div><a href="${fw.page}" class="firmware-link" target="_blank">Скачать</a></div>
+                    </div>
+                `;
+            });
+            
+            document.getElementById('detail-table').innerHTML = tableHtml;
+            showSection('detail-section');
+        }
+        
+        // ============================================
+        // ЗАГРУЗКА
         // ============================================
         
         document.addEventListener('DOMContentLoaded', function() {
             
-            // 1. Заполняем карточки смартфонов
+            // Карточки смартфонов
             const phoneGrid = document.getElementById('phone-grid');
+            phoneGrid.innerHTML = ''; // Очищаем
             
-            // Получаем уникальные модели из базы данных
-            const models = [];
-            const modelMap = new Map();
-            
-            firmwareDatabase.forEach(fw => {
-                if (!modelMap.has(fw.modelId) && fw.isActive !== false) {
-                    modelMap.set(fw.modelId, {
-                        id: fw.modelId,
-                        name: fw.modelName,
-                        code: fw.modelCode,
-                        image: fw.image || '📱',
-                        firmwareCount: firmwareDatabase.filter(f => f.modelId === fw.modelId && f.isActive !== false).length
-                    });
-                }
-            });
-            
-            modelMap.forEach(model => {
-                const hasFastboot = firmwareDatabase.some(f => f.modelId === model.id && f.type === 'Fastboot' && f.isActive !== false);
-                
-                const card = document.createElement('a');
-                card.href = `phones/${model.id}.html`;
+            models.forEach(model => {
+                const count = firmwareDatabase.filter(f => f.modelId === model.id).length;
+                const card = document.createElement('div');
                 card.className = 'u-card-phone';
+                card.onclick = () => showPhoneDetail(model.id);
                 card.innerHTML = `
-                    <div class="u-card-image">${model.image}</div>
+                    <div class="u-card-image">${model.icon}</div>
                     <div class="u-card-body">
                         <h3 class="u-card-title">${model.name}</h3>
                         <p class="u-card-code">${model.code}</p>
-                        <p class="u-card-desc">
-                            Доступно прошивок: ${model.firmwareCount}<br>
-                            ${firmwareDatabase.filter(f => f.modelId === model.id && f.isActive !== false).map(f => f.type).join(' • ')}
-                        </p>
-                        ${hasFastboot ? '<span class="u-card-badge">Есть Fastboot</span>' : ''}
+                        <p class="u-card-desc">${count} прошивок</p>
                     </div>
                 `;
                 phoneGrid.appendChild(card);
             });
             
-            // 2. Заполняем карточки последних прошивок (максимум 60)
+            // Карточки всех прошивок
             const firmwareGrid = document.getElementById('firmware-grid');
+            firmwareGrid.innerHTML = ''; // Очищаем
             
-            // Используем latestFirmware из firmware-db.js (уже отсортировано и ограничено 60)
-            latestFirmware.forEach(fw => {
+            const sortedFirmware = [...firmwareDatabase].sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            sortedFirmware.forEach(fw => {
                 const card = document.createElement('div');
                 card.className = 'u-card-firmware';
                 card.innerHTML = `
@@ -570,39 +800,15 @@
                         </div>
                         <div class="u-firmware-buttons">
                             <a href="${fw.page}" class="u-btn-small">Скачать</a>
-                            <a href="phones/${fw.modelId}.html" class="u-btn-small">Все прошивки</a>
+                            <a class="u-btn-small" onclick="showPhoneDetail('${fw.modelId}')">Все прошивки</a>
                         </div>
                     </div>
                 `;
                 firmwareGrid.appendChild(card);
             });
             
-            // Если прошивок нет
-            if (latestFirmware.length === 0) {
-                firmwareGrid.innerHTML = '<div style="text-align: center; padding: 40px; color: #6c757d;">Нет доступных прошивок</div>';
-            }
-            
-            // 3. Подсветка активного пункта меню при скролле
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.u-nav-link');
-            
-            window.addEventListener('scroll', () => {
-                let current = '';
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    if (pageYOffset >= sectionTop - 200) {
-                        current = section.getAttribute('id');
-                    }
-                });
-                
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${current}`) {
-                        link.classList.add('active');
-                    }
-                });
-            });
+            // Показываем главную секцию по умолчанию
+            showSection('home-section');
         });
     </script>
 </body>
